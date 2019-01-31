@@ -1,0 +1,101 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+@media print
+{
+    .staffSet{
+        page-break-inside: avoid;
+    }
+}
+
+.container {
+    margin: auto;
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.score {
+  .staffSet {
+    margin: 4em 0;
+  }
+}
+.controls-clefs {
+  text-align: left;
+  .main-controls {
+    padding: 1em;
+  }
+}
+
+.title {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+.control-clef {
+  margin: 1em;
+  display: inline-block;
+  border: solid 1px black;
+  text-align: left;
+  padding: 1em;
+  max-width: 250px;
+  padding-bottom: 0;
+  label {
+    display: block;
+    margin: 10px 5px;
+  }
+  .color-1, .color-2 {
+    display: inline-block;
+  }
+}
+
+.staff {
+  display: block;
+  height: 80px;
+  height: 130px;
+  margin: 5px 0;
+  position: relative;
+  // margin: 1em 1% 0 10%;
+  overflow: hidden;
+  .melodies {
+    border: solid black 1px;
+    position: relative;
+    height: 100%;
+    width: calc(100% - 100px);
+    float: left;
+    box-sizing: border-box;
+    max-width: 800px;
+    overflow: hidden
+  }
+}
+
+.clef-title {
+  display: inline-block;
+  left: 0;
+  float: left;
+  width: 100px;
+  height: 100%;
+  position: relative;
+  &:after {
+    content: " ";
+    border: solid black 1px;
+    width: 20%;
+    height: 0;
+    padding-bottom: 40%;
+    position: absolute;
+    left: 40%;
+    top: 0;
+    margin-top: 1.5em;
+  }
+}
+
+.melody {
+  .note {
+    position: absolute;
+    box-sizing: border-box;
+  }
+}
