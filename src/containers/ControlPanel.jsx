@@ -40,17 +40,19 @@ class ControlPanel extends React.Component {
   }
 
   chooserChange(i,j,value){
-    console.log(i,j,value)
     var {clefs} = this.props.options;
-    console.log(clefs[i],j,value)
-
     clefs[i][j] = value;
     this.props.update({clefs:clefs})
+  }
+  generateScore(){
+    var {iterations} = this.props.options;
+    this.props.update({iterations: iterations++})
   }
   clefConfig(e,i){
     return (
     <div className="control-clef" key={i}>
       <label htmlFor="title">Clef Name:<input onChange={this.formChange} type="text" value={e.title}></input></label>
+      <label htmlFor="maxMelodies">Melody Lines: 1<input className="maxMelodies" onChange={(e) => this.formChange(i,e)} type="range" name="maxMelodies" max={2} min={1} step={1} value={e.maxMelodies}></input>2</label>
       <label htmlFor="repeatNotes">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes" max={1} min={0} step={.01} value={e.repeatNotes}></input>Always</label>
       <label htmlFor="restProbability">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability" max={1} min={0} step={.01} value={e.restProbability}></input>Always</label>
       <label htmlFor="duration">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange",e.update)} domain={[0, 50]} colors={e.colors} values={e.durationRange}/></label>

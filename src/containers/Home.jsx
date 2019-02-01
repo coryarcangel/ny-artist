@@ -23,6 +23,7 @@ let options = {
   title: "ny artist",
   test: 0,
   duration: 5,
+  iterations: 0,
   clefs: [
       {
         title: "right hand",
