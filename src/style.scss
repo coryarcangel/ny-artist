@@ -18,6 +18,15 @@ body {
       font-size: 2em;
       top: -1em;
       right: 10px;
+      span {
+        display:none;
+      }
+      a {
+        display: none;
+      }
+    }
+    .print-data {
+      display: block;
     }
 
 }
@@ -79,6 +88,10 @@ body {
   .color-1, .color-2 {
     display: inline-block;
   }
+}
+
+.print-data {
+  display: none;
 }
 
 .staff {

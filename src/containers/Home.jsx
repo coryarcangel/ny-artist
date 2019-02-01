@@ -71,6 +71,9 @@ class Home extends React.Component {
   changeConfig(newConfig){
     this.setState(newConfig)
   }
+  printData(){
+    return (<div className="print-data">generated on {new Date().toString()}</div>)
+  }
   score(count){
     let staffs = [];
     for (var i = 0; i < count; i++) {
@@ -85,8 +88,9 @@ class Home extends React.Component {
 
   render(){
     return (<div>
-      <span className="title">{this.state.title}</span>
+      <span className="title">"{this.state.title}" <span>/</span> <a href="" onClick={() => window.print()}>print</a></span>
       <ControlPanel options={this.state} update={this.changeConfig}/>
+        {this.printData()}
         {this.score(this.state.duration)}
       </div>
     );

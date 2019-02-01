@@ -56,8 +56,8 @@ class ControlPanel extends React.Component {
       <label htmlFor="duration">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange",e.update)} domain={[0, 50]} colors={e.colors} values={e.durationRange}/></label>
       <label htmlFor="changeLimit">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit",e.update)} domain={[0, 20]} colors={e.colors} values={e.changeLimit}/></label>
       <label htmlFor="restRange">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange",e.update)} domain={[0, 50]} colors={e.colors} values={e.restRange}/></label>
-      <label className="color-1" htmlFor="color-1">Color #1<input onChange={(e) => this.colorChange(i,0,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-0" value={e.colors[0]}></input></label>
-      <label className="color-1" htmlFor="color-2">Color #2<input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label>
+      <label className="color-1" htmlFor="color-1">Color #1 <input onChange={(e) => this.colorChange(i,0,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-0" value={e.colors[0]}></input></label>
+      <label className="color-1" htmlFor="color-2">Color #2 <input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label>
       <button onClick={() => this.removeClef(i)}>remove</button>
     </div>
     )
