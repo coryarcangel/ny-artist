@@ -25,17 +25,6 @@ let options = {
   duration: 5,
   clefs: [
       {
-        title: "left hand",
-        maxMelodies: 2,
-        minMelodies: 1,
-        repeatNotes: .1,
-        restProbability: .5,
-        durationRange: [10,15],
-        changeLimit: [10,20],
-        restRange: [1,20],
-        colors: ["#0e50fe","#f8ed00"]
-      },
-      {
         title: "right hand",
         maxMelodies: 2,
         minMelodies: 1,
@@ -47,8 +36,19 @@ let options = {
         colors: ["#4ccd00","#ff0062"]
       },
       {
-        title: "feet",
+        title: "left hand",
         maxMelodies: 2,
+        minMelodies: 1,
+        repeatNotes: .1,
+        restProbability: .5,
+        durationRange: [10,15],
+        changeLimit: [10,20],
+        restRange: [1,20],
+        colors: ["#0e50fe","#f8ed00"]
+      },
+      {
+        title: "feet",
+        maxMelodies: 1,
         minMelodies: 1,
         durationRange: [3,10],
         repeatNotes: .3,

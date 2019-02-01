@@ -86,8 +86,21 @@ class Staff extends React.Component {
     let melodies = [[],[]];
     let register = {};
     //moves to the next note, but if it's the first note we just start in its area.
-    var status = [0,0];
-    while(status[0]<100 || status[1]<100){
+    var status = [];
+    for (var i = 0; i < settings.maxMelodies; i++) {
+      status.push(0);
+    }
+
+    const statusesFinished = (status) => {
+      let finished = true;
+      for (var i = 0; i < status.length; i++) {
+        if(status[i]<100)
+          finished = false;
+      }
+      return finished;
+    }
+    while(!statusesFinished(status)){
+
       for (var i = 0; i < settings.maxMelodies; i++) {
         var rest = Math.random()<settings.restProbability;
         var duration = randomDuration(settings[rest ? "restRange" : "durationRange" ]);

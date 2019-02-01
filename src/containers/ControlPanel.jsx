@@ -57,6 +57,7 @@ class ControlPanel extends React.Component {
       <label htmlFor="changeLimit">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit",e.update)} domain={[0, 20]} colors={e.colors} values={e.changeLimit}/></label>
       <label htmlFor="restRange">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange",e.update)} domain={[0, 50]} colors={e.colors} values={e.restRange}/></label>
       <label className="color-1" htmlFor="color-1">Color #1<input onChange={(e) => this.colorChange(i,0,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-0" value={e.colors[0]}></input></label>
+      <label className="color-1" htmlFor="color-2">Color #2<input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label>
       <button onClick={() => this.removeClef(i)}>remove</button>
     </div>
     )
@@ -65,8 +66,9 @@ class ControlPanel extends React.Component {
     return (
       <div className="controls-clefs">
       <div className="main-controls">
-        <label htmlFor="duration">Total duration<input onChange={(e) => this.mainChange(e)} type="range" name="duration" max={50} min={1} step={1} value={this.props.options.duration}></input>{this.props.options.duration} passages</label>
-        <div  className={"add-clef"}><button onClick={this.addClef}>add a clef</button></div>
+      <label className="workTitle" htmlFor="workTitle">Work Title:<input name="title" onChange={(e) => this.mainChange(e)} type="text" value={this.props.options.title}></input></label>
+        <label htmlFor="duration">Total duration<input onChange={(e) => this.mainChange(e)} type="range" name="duration" max={50} min={1} step={1} value={this.props.options.duration}></input> {this.props.options.duration} passages</label>
+        <div  className={"add-clef"}><button onClick={this.addClef}>new clef</button></div>
       </div>
       {this.props.options.clefs.map(this.clefConfig)}
       </div>

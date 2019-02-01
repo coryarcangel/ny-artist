@@ -87,7 +87,7 @@ class Chooser extends Component {
                     key={id}
                     source={source}
                     target={target}
-                    color={this.props.colors[0]}
+                    color={this.props.colors[1]}
                     getTrackProps={getTrackProps}
                   />
                 ))}
