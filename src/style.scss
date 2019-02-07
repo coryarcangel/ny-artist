@@ -85,6 +85,9 @@ input.maxMelodies {
   padding: 1em;
   max-width: 250px;
   padding-bottom: 0;
+  > button {
+    margin: 1em 0;
+  }
   label {
     display: block;
     margin: 10px 5px;

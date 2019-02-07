@@ -100,9 +100,12 @@ class Staff extends React.Component {
       return finished;
     }
     while(!statusesFinished(status)){
-
       for (var i = 0; i < settings.maxMelodies; i++) {
-        var rest = Math.random()<settings.restProbability;
+        var compStatus = 100*(this.props.index+(status[i]/100))/this.props.count;
+        var windowToPlay = settings["melodyOccurrence"+(i+1)];
+        var canPlay = (compStatus >= windowToPlay[0] && compStatus <= windowToPlay[1]);
+        var rest = Math.random()<settings.restProbability || !canPlay;
+        // console.log(rest,settings["melodyOccurrence"+(i+1)], "precentage:", compStatus)
         var duration = randomDuration(settings[rest ? "restRange" : "durationRange" ]);
         var proposedNote = {
           index: i,

@@ -34,6 +34,8 @@ let options = {
         changeLimit: [10,20],
         restRange: [1,3],
         restProbability: .5,
+        melodyOccurrence1: [0,100],
+        melodyOccurrence2: [0,100],
         colors: ["#4ccd00","#ff0062"]
       },
       {
@@ -45,6 +47,8 @@ let options = {
         durationRange: [10,15],
         changeLimit: [10,20],
         restRange: [1,20],
+        melodyOccurrence1: [0,100],
+        melodyOccurrence2: [0,100],
         colors: ["#0e50fe","#f8ed00"]
       },
       {
@@ -56,6 +60,7 @@ let options = {
         changeLimit: [10,20],
         restRange: [10,20],
         restProbability: .5,
+        melodyOccurrence1: [0,100],
         colors: [randomColor(),randomColor()]
       }
     ]
@@ -80,7 +85,7 @@ class Home extends React.Component {
     for (var i = 0; i < count; i++) {
       staffs.push(
         <div className="staffSet" key={i}>
-          {options.clefs.map((e,j) => <Staff key={i*count+j} settings={e} />)}
+          {options.clefs.map((e,j) => <Staff key={i*count+j} index={i} count={count} settings={e} />)}
         </div>
       )
     }
