@@ -28,9 +28,11 @@ export function Handle({
         width: 14,
         height: 14,
         cursor: 'ew-resize',
-        border: 0,
+        transform: (id === "$$-0" ? "" : "translateX(-16px)"),
+        border: "solid black 1px",
         // boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.2)',
-        backgroundColor: color,
+        backgroundColor: "black",
+        opacity: .3
       }}
       {...getHandleProps(id)}
     />
@@ -65,7 +67,9 @@ export function Track({ source, target, getTrackProps, disabled, color }) {
         height: 14,
         zIndex: 1,
         backgroundColor: color,
+        border: "solid black 1px",
         cursor: 'pointer',
+        boxSizing: "border-box",
         left: `${source.percent}%`,
         width: `${target.percent - source.percent}%`,
       }}

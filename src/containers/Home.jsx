@@ -66,11 +66,17 @@ let options = {
         maxMelodies: 1,
         minMelodies: 1,
         durationRange1: [10,30],
+        durationRange2: [10,30],
         repeatNotes1: .1,
+        repeatNotes2: .1,
         changeLimit1: [10,20],
+        changeLimit2: [10,20],
         restRange1: [1,3],
+        restRange2: [1,3],
         restProbability1: .5,
+        restProbability2: .5,
         melodyOccurrence1: [0,100],
+        melodyOccurrence2: [0,100],
         colors: [randomColor(),randomColor()]
       }
     ]

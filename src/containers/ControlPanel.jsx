@@ -63,29 +63,29 @@ class ControlPanel extends React.Component {
     })
     return (
     <div className="control-clef" key={i}>
-    <label htmlFor="title">Clef Name: <input onChange={this.formChange} type="text" value={e.title}></input></label>
+    <label htmlFor="title"><input className="clefTitle" onChange={this.formChange} type="text" value={e.title}></input></label>
+    <label htmlFor="maxMelodies">Melody Lines: 1<input className="maxMelodies" onChange={(e) => this.formChange(i,e)} type="range" name="maxMelodies" max={2} min={1} step={1} value={e.maxMelodies}></input>2</label>
     <label className="color-1" htmlFor="color-1">Color #1 <input onChange={(e) => this.colorChange(i,0,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-0" value={e.colors[0]}></input></label>
-    <label className="color-2" htmlFor="color-2">Color #2 <input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label>
-    <button onClick={() => this.removeClef(i)}>remove</button>
-    <span className="melodyControl" style={{"borderColor":e.colors[1]}}>
+    { e.maxMelodies > 1? <label className="color-2" htmlFor="color-2">Color #2 <input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label> : ""}
+    <button onClick={() => this.removeClef(i)}>remove this clef</button>
+    <span className="melodyControl" style={{"borderColor":e.colors[0]}}>
       <div className="melodyLabel">Melody 1</div>
-      <label htmlFor="maxMelodies">Melody Lines: 1<input className="maxMelodies" onChange={(e) => this.formChange(i,e)} type="range" name="maxMelodies" max={2} min={1} step={1} value={e.maxMelodies}></input>2</label>
-      <label htmlFor="repeatNotes">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes1" max={1} min={0} step={.01} value={e.repeatNotes1}></input>Always</label>
-      <label htmlFor="restProbability">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability1" max={1} min={0} step={.01} value={e.restProbability1}></input>Always</label>
-      <label htmlFor="duration">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange1",e.update)} domain={[0, 50]} colors={e.colors} values={e.durationRange1}/></label>
-      <label htmlFor="changeLimit">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit1",e.update)} domain={[0, 20]} colors={e.colors} values={e.changeLimit1}/></label>
-      <label htmlFor="restRange">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange1",e.update)} domain={[0, 50]} colors={e.colors} values={e.restRange1}/></label>
-      <label htmlFor="melodyOccurrence1">Melody Occurrence 1<Chooser onChange={(e) => this.chooserChange(i,"melodyOccurrence1",e.update)} domain={[0, 100]} colors={e.colors} values={e.melodyOccurrence1}/></label>
+      <label htmlFor="duration" className="fancySlider">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange1",e.update)} domain={[0, 50]} colors={[e.colors[1],e.colors[0]]} values={e.durationRange1}/></label>
+      <label htmlFor="changeLimit" className="fancySlider">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit1",e.update)} domain={[0, 20]} colors={[e.colors[1],e.colors[0]]} values={e.changeLimit1}/></label>
+      <label htmlFor="restRange" className="fancySlider">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange1",e.update)} domain={[0, 50]} colors={[e.colors[1],e.colors[0]]} values={e.restRange1}/></label>
+      <label htmlFor="melodyOccurrence1" className="fancySlider">Melody Occurrence 1<Chooser onChange={(e) => this.chooserChange(i,"melodyOccurrence1",e.update)} domain={[0, 100]} colors={[e.colors[1],e.colors[0]]} values={e.melodyOccurrence1}/></label>
+      <label htmlFor="repeatNotes" className="simpleSlider">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes1" max={1} min={0} step={.01} value={e.repeatNotes1}></input>Always</label>
+      <label htmlFor="restProbability" className="simpleSlider">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability1" max={1} min={0} step={.01} value={e.restProbability1}></input>Always</label>
     </span>
     {e.maxMelodies>1 ?
-      <span className="melodyControl"  style={{"borderColor":e.colors[0]}}>
+      <span className="melodyControl"  style={{"borderColor":e.colors[1]}}>
         <div className="melodyLabel">Melody 2</div>
-        <label htmlFor="repeatNotes">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes2" max={1} min={0} step={.01} value={e.repeatNotes2}></input>Always</label>
-        <label htmlFor="restProbability">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability2" max={1} min={0} step={.01} value={e.restProbability2}></input>Always</label>
-        <label htmlFor="duration">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange2",e.update)} domain={[0, 50]} colors={[e.colors[1],e.colors[0]]} values={e.durationRange2}/></label>
-        <label htmlFor="changeLimit">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit2",e.update)} domain={[0, 20]} colors={[e.colors[1],e.colors[0]]} values={e.changeLimit2}/></label>
-        <label htmlFor="restRange">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange2",e.update)} domain={[0, 50]} colors={[e.colors[1],e.colors[0]]} values={e.restRange2}/></label>
-        <label htmlFor="melodyOccurrence2">Melody Occurrence 2<Chooser onChange={(e) => this.chooserChange(i,"melodyOccurrence2",e.update)} domain={[0, 100]} colors={[e.colors[1],e.colors[0]]} values={e.melodyOccurrence2}/></label>
+        <label htmlFor="duration" className="fancySlider">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange2",e.update)} domain={[0, 50]} colors={e.colors} values={e.durationRange2}/></label>
+        <label htmlFor="changeLimit" className="fancySlider">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit2",e.update)} domain={[0, 20]} colors={e.colors} values={e.changeLimit2}/></label>
+        <label htmlFor="restRange" className="fancySlider">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange2",e.update)} domain={[0, 50]} colors={e.colors} values={e.restRange2}/></label>
+        <label htmlFor="melodyOccurrence2" className="fancySlider">Melody Occurrence 2<Chooser onChange={(e) => this.chooserChange(i,"melodyOccurrence2",e.update)} domain={[0, 100]} colors={e.colors} values={e.melodyOccurrence2}/></label>
+        <label htmlFor="repeatNotes" className="simpleSlider">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes2" max={1} min={0} step={.01} value={e.repeatNotes2}></input>Always</label>
+        <label htmlFor="restProbability" className="simpleSlider">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability2" max={1} min={0} step={.01} value={e.restProbability2}></input>Always</label>
       </span> : ""}
   </div>
   )
