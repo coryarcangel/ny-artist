@@ -1,14 +1,5 @@
 import React from 'react';
 
-let sample = {
-  title: "feet",
-  maxMelodies: 2,
-  minMelodies: 1,
-  durationRange: [1,60],
-  changeLimit: 10,
-  restRange: [1,20],
-  restProbability: .1,
-}
 let melodies = [];
 const num = (range) => Math.floor(Math.random()*range);
 let randomDuration = (range) => {
@@ -34,10 +25,10 @@ class Staff extends React.Component {
   }
 
   potentialNote(melodies,i){
-    if(Math.random()<this.props.settings.repeatNotes)
+    if(Math.random()<this.props.settings["repeatNotes"+(i+1)])
       return melodies[i][melodies[i].length-1].note;
-    let max = this.props.settings.changeLimit[1];
-    let min = this.props.settings.changeLimit[0];
+    let max = this.props.settings["changeLimit"+(i+1)][1];
+    let min = this.props.settings["changeLimit"+(i+1)][0];
     let range = max-min;
     return melodies[i][melodies[i].length-1].note + [-1,1][num(2)]*(num(range)+min);
   }
@@ -104,9 +95,9 @@ class Staff extends React.Component {
         var compStatus = 100*(this.props.index+(status[i]/100))/this.props.count;
         var windowToPlay = settings["melodyOccurrence"+(i+1)];
         var canPlay = (compStatus >= windowToPlay[0] && compStatus <= windowToPlay[1]);
-        var rest = Math.random()<settings.restProbability || !canPlay;
-        // console.log(rest,settings["melodyOccurrence"+(i+1)], "precentage:", compStatus)
-        var duration = randomDuration(settings[rest ? "restRange" : "durationRange" ]);
+        var indexString = (i+1).toString();
+        var rest = Math.random()<settings["restProbability"+indexString] || !canPlay;
+        var duration = randomDuration(settings[rest ? "restRange"+indexString : "durationRange"+indexString ]);
         var proposedNote = {
           index: i,
           note: this.getNote(melodies,status[i],i,duration),

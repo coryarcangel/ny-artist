@@ -22,20 +22,12 @@ const defaultValues = [160, 300, 400, 440]
 class Chooser extends Component {
   constructor(props){
     super();
-    console.log(props)
-    //railStyle = {...railStyle, backgroundColor: props.colors[0]}
     this.state = {
       ...props
     }
   }
-  // state = {
-  //   domain: domain,
-  //   values: defaultValues.slice(),
-  //   update: defaultValues.slice(),
-  // }
 
   onUpdate = update => {
-    console.log(update)
     this.props.onChange({ update })
     // this.setState({ update })
   }
