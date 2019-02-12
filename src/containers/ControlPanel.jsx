@@ -19,10 +19,18 @@ class ControlPanel extends React.Component {
     this.props.update({clefs: newClefs})
   }
   formChange(i,e){
-    console.log(e)
-    var {clefs} = this.props.options;
-    clefs[i][e.target.name] = e.target.value;
-    this.props.update({clefs:clefs})
+    console.log("formchange",i)
+    if(typeof i === "number"){
+      var {clefs} = this.props.options;
+      clefs[i][e.target.name] = e.target.value;
+      this.props.update({clefs:clefs})
+      }
+    else {
+      var update = {};
+      update[e.target.name] = e.target.value;
+      console.log("update",e.target)
+      this.props.update(update)
+    }
   }
 
   mainChange(e){
@@ -58,12 +66,11 @@ class ControlPanel extends React.Component {
 
   clefConfig(e,i){
     var converted_colors = e.colors.map((color)=>{
-      console.log("uayahsahdhsad","rgba("+this.hexToDecimalColor(color).concat([.5]).join(",")+")")
       return "rgba("+this.hexToDecimalColor(color).concat([.2]).join(",")+")";
     })
     return (
     <div className="control-clef" key={i}>
-    <label htmlFor="title"><input className="clefTitle" onChange={this.formChange} type="text" value={e.title}></input></label>
+    <label htmlFor="title"><input name="title" className="clefTitle" onChange={(e) => this.formChange(i,e)} type="text" value={e.title}></input></label>
     <label htmlFor="maxMelodies">Melody Lines: 1<input className="maxMelodies" onChange={(e) => this.formChange(i,e)} type="range" name="maxMelodies" max={2} min={1} step={1} value={e.maxMelodies}></input>2</label>
     <label className="color-1" htmlFor="color-1">Color #1 <input onChange={(e) => this.colorChange(i,0,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-0" value={e.colors[0]}></input></label>
     { e.maxMelodies > 1? <label className="color-2" htmlFor="color-2">Color #2 <input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label> : ""}
