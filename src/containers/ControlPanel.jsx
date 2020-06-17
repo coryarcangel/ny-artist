@@ -81,7 +81,7 @@ class ControlPanel extends React.Component {
       <label htmlFor="changeLimit" className="fancySlider">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit1",e.update)} domain={[0, 20]} colors={[e.colors[1],e.colors[0]]} values={e.changeLimit1}/></label>
       <label htmlFor="restRange" className="fancySlider">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange1",e.update)} domain={[0, 50]} colors={[e.colors[1],e.colors[0]]} values={e.restRange1}/></label>
       <label htmlFor="melodyOccurrence1" className="fancySlider">Melody Occurrence 1<Chooser onChange={(e) => this.chooserChange(i,"melodyOccurrence1",e.update)} domain={[0, 100]} colors={[e.colors[1],e.colors[0]]} values={e.melodyOccurrence1}/></label>
-      <label htmlFor="repeatNotes" className="simpleSlider">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes1" max={1} min={0} step={.01} value={e.repeatNotes1}></input>Always</label>
+      <label htmlFor="repeatNotes" className="simpleSlider repeatNotes">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes1" max={1} min={0} step={.01} value={e.repeatNotes1}></input>Always</label>
       <label htmlFor="restProbability" className="simpleSlider">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability1" max={1} min={0} step={.01} value={e.restProbability1}></input>Always</label>
     </span>
     {e.maxMelodies>1 ?
@@ -91,7 +91,7 @@ class ControlPanel extends React.Component {
         <label htmlFor="changeLimit" className="fancySlider">Melody Movement Range<Chooser onChange={(e) => this.chooserChange(i,"changeLimit2",e.update)} domain={[0, 20]} colors={e.colors} values={e.changeLimit2}/></label>
         <label htmlFor="restRange" className="fancySlider">Rest Length Range<Chooser onChange={(e) => this.chooserChange(i,"restRange2",e.update)} domain={[0, 50]} colors={e.colors} values={e.restRange2}/></label>
         <label htmlFor="melodyOccurrence2" className="fancySlider">Melody Occurrence 2<Chooser onChange={(e) => this.chooserChange(i,"melodyOccurrence2",e.update)} domain={[0, 100]} colors={e.colors} values={e.melodyOccurrence2}/></label>
-        <label htmlFor="repeatNotes" className="simpleSlider">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes2" max={1} min={0} step={.01} value={e.repeatNotes2}></input>Always</label>
+        <label htmlFor="repeatNotes" className="simpleSlider repeatNotes">Repeat Notes: <br/>Never<input className="repeatNotes" onChange={(e) => this.formChange(i,e)} type="range" name="repeatNotes2" max={1} min={0} step={.01} value={e.repeatNotes2}></input>Always</label>
         <label htmlFor="restProbability" className="simpleSlider">Rest: <br/>Never<input className="restProbability" onChange={(e) => this.formChange(i,e)} type="range" name="restProbability2" max={1} min={0} step={.01} value={e.restProbability2}></input>Always</label>
       </span> : ""}
   </div>
@@ -101,7 +101,7 @@ class ControlPanel extends React.Component {
     return (
       <div className="controls-clefs">
       <div className="main-controls">
-      <label className="workTitle" htmlFor="workTitle">Work Title:<input name="title" onChange={(e) => this.mainChange(e)} type="text" value={this.props.options.title}></input></label>
+      <label className="workTitle" htmlFor="workTitle">Title of Piece: <input name="title" onChange={(e) => this.mainChange(e)} type="text" value={this.props.options.title}></input></label>
         <label htmlFor="duration">Total duration<input onChange={(e) => this.mainChange(e)} type="range" name="duration" max={500} min={1} step={1} value={this.props.options.duration}></input> {this.props.options.duration} passages</label>
         <div  className={"add-clef"}><button onClick={this.addClef}>new clef</button></div>
       </div>

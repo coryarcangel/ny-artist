@@ -62,6 +62,12 @@ body {
   right: 1em;
 }
 
+.credit {
+  position: fixed;
+  bottom: .5em;
+  left: .5em;
+}
+
 .v1 {
   position: fixed;
   bottom: .5em;
@@ -113,10 +119,6 @@ input.maxMelodies {
     .melodyLabel {
       font-weight: bold;
     }
-    label {
-
-
-    }
   }
   > button {
     margin: 1em 0;
@@ -125,6 +127,12 @@ input.maxMelodies {
     display: inline-block;
     margin: 10px 0px;
     padding-right: 14px;
+    &.repeatNotes {
+      @media(max-width:935px){
+        display: block;
+      }
+    }
+
   }
   .color-1, .color-2 {
     display: inline-block;
