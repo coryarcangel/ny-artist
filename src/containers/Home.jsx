@@ -110,6 +110,10 @@ class Home extends React.Component {
 
   render(){
     return (<div>
+      <div className="title-area">
+        <div className="workTitle" htmlFor="workTitle">NYARTIST</div>
+        <div className='credit'>Commissioned by the Sharjah Art Foundation. </div>
+      </div>
       <span className="title"><a href="" onClick={() => window.print()}>print</a></span>
       <ControlPanel options={this.state} update={this.changeConfig}/>
         {this.printData()}

@@ -74,7 +74,7 @@ class ControlPanel extends React.Component {
     <label htmlFor="maxMelodies">Melody Lines: 1<input className="maxMelodies" onChange={(e) => this.formChange(i,e)} type="range" name="maxMelodies" max={2} min={1} step={1} value={e.maxMelodies}></input>2</label>
     <label className="color-1" htmlFor="color-1">Color #1 <input onChange={(e) => this.colorChange(i,0,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-0" value={e.colors[0]}></input></label>
     { e.maxMelodies > 1? <label className="color-2" htmlFor="color-2">Color #2 <input onChange={(e) => this.colorChange(i,1,e)} onInput={(e) => this.colorChange(i,e)} type="color" name="colors-1" value={e.colors[1]}></input></label> : ""}
-    <button onClick={() => this.removeClef(i)}>remove this clef</button>
+    <button onClick={() => this.removeClef(i)}>remove clef</button>
     <span className="melodyControl" style={{"borderColor":e.colors[0]}}>
       <div className="melodyLabel">Melody 1</div>
       <label htmlFor="duration" className="fancySlider">Duration Range (in % of passage)<Chooser onChange={(e) => this.chooserChange(i,"durationRange1",e.update)} domain={[0, 50]} colors={[e.colors[1],e.colors[0]]} values={e.durationRange1}/></label>
@@ -101,11 +101,9 @@ class ControlPanel extends React.Component {
     return (
       <div className="controls-clefs">
       <div className="main-controls">
-      <label className="workTitle" htmlFor="workTitle">NYARTIST</label>
         <label htmlFor="duration">Total duration<input onChange={(e) => this.mainChange(e)} type="range" name="duration" max={500} min={1} step={1} value={this.props.options.duration}></input> {this.props.options.duration} passages</label>
         <div  className={"add-clef"}><button onClick={this.addClef}>new clef</button></div>
       </div>
-      <div class='credit'>Commissioned by the Sharjah Art Foundation. </div>
       {this.props.options.clefs.map(this.clefConfig)}
       </div>
     )

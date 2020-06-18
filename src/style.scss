@@ -3,18 +3,19 @@ body {
   margin: 0;
 }
 
-@media print
-{
+@media print {
+    .title-area {
+      margin: 1em;
+      z-index: 10;
+    }
+
     .main-controls {
       display: none;
     }
-    .credit {
-      position: fixed;
-      bottom: .5em;
-      left: 0;
-      background:white;
-      padding-right: 200px;
+    .control-clef, .melody-control{
+      page-break-inside: avoid;
     }
+
     .staffSet{
         page-break-inside: avoid;
         .staff .melodies {
@@ -40,7 +41,6 @@ body {
 
 .container {
     margin: auto;
-    text-align: center;
 }
 
 .left {
@@ -52,6 +52,11 @@ body {
     margin: 4em 0;
   }
 }
+
+.controls, .controls-clefs {
+  display: inline-block;
+}
+
 .controls-clefs {
   text-align: left;
   .main-controls, .credit {
@@ -62,6 +67,12 @@ body {
     padding-top: 0;
   }
 }
+
+.title-area {
+  text-align: left;
+    margin: 1em;
+}
+
 .workTitle {
   text-align: left;
   margin: 0 1em 0 0;
@@ -137,6 +148,7 @@ input.maxMelodies {
   label {
     display: inline-block;
     margin: 10px 0px;
+    vertical-align: middle;
     padding-right: 14px;
     &.repeatNotes {
       @media(max-width:935px){
@@ -179,6 +191,7 @@ input.maxMelodies {
   left: 0;
   float: left;
   width: 100px;
+  text-align: center;
   height: 100%;
   position: relative;
   &:after {
