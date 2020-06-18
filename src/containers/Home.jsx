@@ -112,7 +112,7 @@ class Home extends React.Component {
     return (<div>
       <div className="title-area">
         <div className="workTitle" htmlFor="workTitle">NYARTIST</div>
-        <div className='credit'>Commissioned by the Sharjah Art Foundation. </div>
+        <div className='credit'>COMMISSIONED BY SHARJAH ART FOUNDATION - SB14, 2019</div>
       </div>
       <span className="title"><a href="" onClick={() => window.print()}>print</a></span>
       <ControlPanel options={this.state} update={this.changeConfig}/>
