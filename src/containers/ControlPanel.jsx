@@ -101,10 +101,11 @@ class ControlPanel extends React.Component {
     return (
       <div className="controls-clefs">
       <div className="main-controls">
-      <label className="workTitle" htmlFor="workTitle">Title of Piece: <input name="title" onChange={(e) => this.mainChange(e)} type="text" value={this.props.options.title}></input></label>
+      <label className="workTitle" htmlFor="workTitle">NYARTIST</label>
         <label htmlFor="duration">Total duration<input onChange={(e) => this.mainChange(e)} type="range" name="duration" max={500} min={1} step={1} value={this.props.options.duration}></input> {this.props.options.duration} passages</label>
         <div  className={"add-clef"}><button onClick={this.addClef}>new clef</button></div>
       </div>
+      <div class='credit'>Commissioned by the Sharjah Art Foundation. </div>
       {this.props.options.clefs.map(this.clefConfig)}
       </div>
     )

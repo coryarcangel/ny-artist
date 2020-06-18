@@ -8,6 +8,13 @@ body {
     .main-controls {
       display: none;
     }
+    .credit {
+      position: fixed;
+      bottom: .5em;
+      left: 0;
+      background:white;
+      padding-right: 200px;
+    }
     .staffSet{
         page-break-inside: avoid;
         .staff .melodies {
@@ -47,14 +54,18 @@ body {
 }
 .controls-clefs {
   text-align: left;
-  .main-controls {
+  .main-controls, .credit {
     padding: 1em;
+    padding-bottom: 0;
+  }
+  .credit {
+    padding-top: 0;
   }
 }
 .workTitle {
   text-align: left;
   margin: 0 1em 0 0;
-  float: left;
+  // float: left;
 }
 .title {
   position: absolute;
@@ -62,7 +73,7 @@ body {
   right: 1em;
 }
 
-.credit {
+.creditz{
   position: fixed;
   bottom: .5em;
   left: .5em;

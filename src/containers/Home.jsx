@@ -110,7 +110,7 @@ class Home extends React.Component {
 
   render(){
     return (<div>
-      <span className="title">"{this.state.title}" <span>/</span> <a href="" onClick={() => window.print()}>print</a></span>
+      <span className="title"><a href="" onClick={() => window.print()}>print</a></span>
       <ControlPanel options={this.state} update={this.changeConfig}/>
         {this.printData()}
         {this.score(this.state.duration)}
